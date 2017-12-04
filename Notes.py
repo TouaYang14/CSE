@@ -105,3 +105,23 @@ while a <= 10:
 # Random Numbers
 
 print(random.randint(0, 100))
+
+print(1 == 1)   # Is 1 equal to 1?
+print(1 != 2)   # Is 1 not equal to 2?
+print(10 <= 15)
+print(not False)
+
+# Recasting
+
+c = '1'
+print(c == 1)
+print(int(c) == 1)  # Both are ints
+print(c == str(1))   # Both are strongs
+
+# The iput command ALWAYS gives a string
+
+# 1) Generate random number
+# 2) Take an input(bunber) from the user
+# 3) Compare input to generated number
+# 4) Add "Higher" and "lower" statements
+# 5) Add 5 guesses
