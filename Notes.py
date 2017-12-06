@@ -121,7 +121,7 @@ print(c == str(1))   # Both are strongs
 # The iput command ALWAYS gives a string
 
 # 1) Generate random number
-# 2) Take an input(bunber) from the user
+# 2) Take an input(number) from the user
 # 3) Compare input to generated number
 # 4) Add "Higher" and "lower" statements
 # 5) Add 5 guesses

@@ -2,7 +2,6 @@
 
 import random
 random_number = (random.randint(1, 50))
-print(random.randint(1, 50))
-def random_number():
-    random_number = input
-    ask = input
+print(random_number)
+
+random_number = input("What number do you think I am thinking of?")
