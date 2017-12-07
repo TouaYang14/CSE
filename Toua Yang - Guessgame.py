@@ -2,6 +2,13 @@
 
 import random
 random_number = (random.randint(1, 50))
-print(random_number)
 
-random_number = input("What number do you think I am thinking of?")
+guesses = 5
+
+number = input("What number do you think I am thinking of? ")
+
+
+if str(random_number) == number:
+    print("You win")
+
+if str(random_number)!= number:
