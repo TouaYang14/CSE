@@ -12,3 +12,5 @@ if str(random_number) == number:
     print("You win")
 
 if str(random_number)!= number:
+    guesses -= 1
+    print("Take another guess ( ͡° ͜ʖ ͡°)")
