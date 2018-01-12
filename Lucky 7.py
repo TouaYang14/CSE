@@ -2,6 +2,10 @@ import random
 
 money = 15
 
+most_money = 0
+
+total_rounds = 0
+
 rounds = 0
 
 while money > 0:
@@ -21,11 +25,15 @@ while money > 0:
         print("You won the bet, you got 5 dollars")
         print("You now have $%s." % money)
 
+    if money > most_money:
+        most_money = money
+        total_rounds = rounds
+
 
 print("You did %s rounds." % rounds)
 
-print("Your Money is %s dollars." % money)
+print("Your money is %s dollars." % money)
 
-print("Your high score was %s rounds" % rounds)
+print("Your high score was %s rounds" % highest_round)
 
 print("Game Over")
