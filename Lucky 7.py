@@ -32,8 +32,8 @@ while money > 0:
 
 print("You did %s rounds." % rounds)
 
-print("Your money is %s dollars." % money)
+print("You now have %s dollars." % money)
 
-print("Your high score was %s rounds" % highest_round)
+print("You should've stopped at round %s when you had %s dollars" % (total_rounds, most_money))
 
 print("Game Over")
