@@ -34,6 +34,6 @@ print("You did %s rounds." % rounds)
 
 print("You now have %s dollars." % money)
 
-print("You should've stopped at round %s when you had %s dollars" % (total_rounds, most_money))
+print("You should've stopped at round %s when you had $%s dollars" % (total_rounds, most_money))
 
 print("Game Over")
