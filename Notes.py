@@ -125,3 +125,10 @@ print(c == str(1))   # Both are strongs
 # 3) Compare input to generated number
 # 4) Add "Higher" and "lower" statements
 # 5) Add 5 guesses
+
+# Lists
+the_count = [1, 2, 3, 4, 5]
+shopping_list = ["Noodles", "Eggrolls", "Milk", "rice", "soda", "chips"]
+
+print(shopping_list[0])
+print(shopping_list[2])
