@@ -28,3 +28,15 @@ listOne = list(str1)
 print(listOne)
 listOne[11] = '.'
 print(listOne)
+
+# the string class
+import string
+print(string.ascii_letters)
+print(string.ascii_lowercase)
+print(string.punctuation)
+print(string.digits)
+
+# Dealing with strings
+strTwo = "ThIs iS a VeRY oDd sEnTenCE"
+lowercase = strTwo.lower()
+print(lowercase)
