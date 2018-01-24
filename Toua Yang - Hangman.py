@@ -2,10 +2,17 @@ import random
 
 import string
 
-print("Welcome to Hangman")
+letters_guessed = []
 
-words_bank = ["NANI", "GTX_1080_TI", "Georgie", "EXIT", "TREE", "TOUA", "HOOD", "WHALE", "EZIO", "HASAKEY"]
+guesses = 10
 
-brain = random.choice(words_bank)
+print("Welcome to Hangman!!")
 
-print("you have to guess the word")
+words_bank = ["NANI", "EDISON", "Georgie", "EXIT", "TREE", "TOUA", "HOOD", "WHALE", "EZIO", "BATMAN"]
+
+random_word = random.choice(words_bank)
+
+print(random_word)
+
+
+

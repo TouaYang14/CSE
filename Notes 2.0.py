@@ -40,3 +40,11 @@ print(string.digits)
 strTwo = "ThIs iS a VeRY oDd sEnTenCE"
 lowercase = strTwo.lower()
 print(lowercase)
+
+
+#Hangman
+#1. Make a word bank - 10 items
+#2. Select a random item to guess
+#3. Add a guess to the list of letters guessed
+#4. Reveal letters based on input
+#5. Create win and lose conditions
