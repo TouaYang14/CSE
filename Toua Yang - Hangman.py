@@ -21,6 +21,8 @@ words_bank = ["nani", "edison", "georgie", "exit", "tree", "clock", "hood", "wha
 
 random_word = random.choice(words_bank)
 
+correct = list(random_word)
+
 letters = list(string.ascii_lowercase)
 
 print(random_word)
@@ -32,18 +34,21 @@ while guesses > 0:
             output.append(letter)
         else:
             output.append("*")
-    print(output)
-    answers = input("Guess a letter ")
-    if letters_guessed == letter in random_word:
+    if letters_guessed == letters in random_word:
         guesses += 0
     else:
+        guesses -= 0
+    print(output)
+    if output == list(random_word):
+        print("You win!")
+    else:
         guesses -= 1
-        print("You got it wrong")
+
+    answers = input("Guess a letter ")
 
     lower = answers.lower()
     letters_guessed.append(lower)
     print("You have %s guesses left" % guesses)
-    if answers == random_word:
-        print("You win!")
+
 
 print("Game Over")
