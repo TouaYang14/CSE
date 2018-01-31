@@ -34,11 +34,11 @@ while guesses > 0:
             output.append(letter)
         else:
             output.append("*")
+    print(" ".join(list(output)))
     if letters_guessed == letters in random_word:
         guesses += 0
     else:
         guesses -= 0
-    print(output)
     if output == list(random_word):
         print("You win!")
     else:
