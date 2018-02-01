@@ -25,8 +25,6 @@ correct = list(random_word)
 
 letters = list(string.ascii_lowercase)
 
-print(random_word)
-
 while guesses > 0:
     output = []
     for letter in random_word:
