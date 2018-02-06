@@ -48,3 +48,82 @@ print(lowercase)
 #3. Add a guess to the list of letters guessed
 #4. Reveal letters based on input
 #5. Create win and lose conditions
+
+
+# Dictionaries - Made up of Key: Value pairs
+dictionary = {'name': 'Lance', 'age': 23, 'height': 5 * 12 + 7}
+
+# Accessing dictionaries
+print(dictionary['name'])
+print(dictionary['age'])
+print(dictionary['height'])
+
+# Adding to a dictionary
+dictionary['weight'] = 280
+print(dictionary)
+
+large_dictionary = {
+    'CA': 'California',
+    'FL': 'Florida',
+    'OH': 'Ohio'
+}
+
+print(large_dictionary['FL'])
+
+larger_dictionary = {
+    'CA': [
+        'Fresno',
+        'Sacramento',
+        'Los Angeles'
+    ],
+    'FL': [
+        "Tampa",
+        "Orlando",
+        "Miami"
+    ],
+    'OH': [
+        "Cleavland",
+        "Cincinnati",
+    ]
+}
+
+print(larger_dictionary['FL'])
+print(larger_dictionary["FL"][2])
+
+largest_dictionary = {
+    'CA': {
+        'NAME': 'California',
+        'POPULATION': 39250000,
+        'BORDER ST': [
+            'Oregon',
+            'Nevada',
+            'Arizona'
+        ]
+    },
+    'AZ': {
+        'NAME': 'Arizona',
+        'POPULATION': 6931000,
+        'BORDER ST': [
+            'California',
+            'Utah',
+            'Nevada',
+            'New Mexico'
+        ]
+    },
+    'NY': {
+        'NAME': "New York",
+        'POPULATION': 19750000,
+        'BORDER ST': [
+            'Vermont',
+            'Massachusetts',
+            'Connecticut',
+            'Pennsylvania',
+            'New Jersey'
+        ]
+    }
+}
+
+current_node = largest_dictionary['CA']
+print(current_node)
+print(current_node['NAME'])
+print(current_node['POPULATION'])
