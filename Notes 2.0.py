@@ -22,7 +22,7 @@ for num in range(len(shopping_list)):
     item = shopping_list[num]
     print("The item at index %d is %s" % (num, item))
 
-# Turn things into a lost
+# Turn things into a list
 str1 = "Hello CLass!"
 listOne = list(str1)
 print(listOne)
