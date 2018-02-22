@@ -32,12 +32,14 @@ print(first_pair.clean)
 
 
 class Cars(object):
-    def __init__(self, tires, horsepower, color, pice, model):
-        self.Tires = Tires
+    def __init__(self, tires, horsepower, White, Three_Million, Lykan_Hypersport):
+        self.Tires = tires
         self.hp = horsepower
         self.color = White
-        self.price = 3,400,000
+        self.price = Three_Million
         self.model = Lykan_Hypersport
+        self.passengers = 0
+        self.running = False
 
     def drive_forward(self):
         if self.running:
@@ -51,3 +53,25 @@ class Cars(object):
         else:
             self.running = True
             print("You start the car")
+
+    def turn_off(self):
+        if self.running:
+            self.running = False
+            print("You have turned off the car")
+        else:
+            print("Nothing Happens")
+
+    def go_for_drive(self, passengers):
+        print("%d passengers get in" % passengers)
+        self.passengers = passengers
+        self.turn_on()
+        self.drive_forward()
+        self.drive_forward()
+        self.drive_forward()
+        self.turn_off()
+        print("%d passengers get out" % passengers)
+        self.passengers = 0
+
+
+my_car = Cars("Red", "Tesla", "X", 9001, "w")
+my_car.go_for_drive(4)
