@@ -57,6 +57,37 @@ world_map = {
         'PATHS': {
             'EAST': ' ROADTOIONIA'
         }
+    },
+    'LOWERTUNNELS': {
+        'NAME': 'Lower Tunnels',
+        'DESCRIPTION': "You are in Lower Tunnels, the room is thin and is very dusty, you see a light coming from the east, and stairs going up leading to the west...",
+        'PATHS': {
+            'EAST': 'XBOX',
+            'WEST': 'Tunnels'
+        }
+    },
+    'XBOX': {
+        'NAME': 'Xbox',
+        'DESCRIPTION': "You are next to xbox and you seem to be able to jump onto it. You see a door next to you as well, as a path to the South...",
+        'PATHS': {
+            'NORTH': 'MIDDOORS',
+            'SOUTH': 'TOPMID',
+
+        }
+    },
+    'MIDDOORS': 'Mid Doors',
+        'DESCRIPTION': "You are at Mid Doors, and there are two paths leading to west and east",
+        'PATHS': {
+        'EAST': 'IONIA',
+        'SOUTH': 'XBOX',
+        'WEST': 'HOWLING MARSH'
+        }
+    },
+    'SHADOWISLE': 'Shadow Isle',
+        'DESCRIPTION': "You are in the Shadow Isle and the air became thick again.. It is very foggy and dark..",
+        'PATHS': {
+            'EAST': 'ICATHIA',
+            'WEST': 'IONIA'
     }
 }
 
