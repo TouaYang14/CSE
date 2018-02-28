@@ -91,7 +91,7 @@ world_map = {
     }
 }
 
-current_node = world_map['NOXUS']
+current_node = world_map['NOXUS'],
 directions = ['NORTH', 'SOUTH', 'EAST', 'WEST']
 
 while True:
