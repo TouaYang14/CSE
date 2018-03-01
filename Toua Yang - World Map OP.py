@@ -27,3 +27,9 @@ long = Room('long', 'Icathia', 'outsideoflongdoors', None, None, None, None, 'Yo
 tunnels = Room('tunnels', 'howling_marsh', 'outsideoftunnels', 'lower_tunnels', None, 'battle_axe', '\n'
                'small_health_potion', 'You are inside\n'
                ' of Tunnels, you see a staircase leading down from the east, and light from the north')
+lowertunnels = Room('lowertunnels', None, None, 'mid', 'tunnels', 'clock', 'compass', 'You are in lower tunnels, you\n'
+                    'see a clock and a compass on the table')
+mid = Room('mid', 'mid_doors', 'top_mid', 'staircase', 'lowertunnels', None, None, 'You are at mid and you see a door\n'
+           'north, you see a hallway leading to a stair to the east.')
+staircase = ('staircase', None, 'top_mid', None, 'mid', None, None, 'You see a hallway turning right, and it is\n'
+             ' leading to a stair case, with dark and misty clouds. As your feet tremble you hear a sound.')
