@@ -44,7 +44,8 @@ world_map = {
     },
     'TUNNELS': {
         'NAME': 'Tunnels',
-        'DESCRIPTION': "You are inside of Tunnels, you see a staircase leading down from the east, and light from the north",
+        'DESCRIPTION': "You are inside of Tunnels, you see a staircase\n"
+                       " leading down from the east, and light from the north",
         'PATHS': {
             'NORTH': 'HOWLING MARSH',
             'SOUTH': 'OUTSIDEOFTUNNELS',
@@ -53,14 +54,16 @@ world_map = {
     },
     'HOWLING MARSH': {
         'NAME': 'Howling Marsh',
-        'DESCRIPTION': "You are in Howling Marsh, the air around you becomes thick and you feel as if someone is watching you... You see a window to the east that is broken but light is coming from it",
+        'DESCRIPTION': "You are in Howling Marsh, the air around you becomes thick and you feel as if someone is\n"
+                       " watching you... You see a window to the east that is broken but light is coming from it",
         'PATHS': {
             'EAST': ' ROADTOIONIA'
         }
     },
     'LOWERTUNNELS': {
         'NAME': 'Lower Tunnels',
-        'DESCRIPTION': "You are in Lower Tunnels, the room is thin and is very dusty, you see a light coming from the east, and stairs going up leading to the west...",
+        'DESCRIPTION': "You are in Lower Tunnels, the room is thin and is very dusty, you see a light coming\n"
+                       " from the east, and stairs going up leading to the west...",
         'PATHS': {
             'EAST': 'XBOX',
             'WEST': 'Tunnels'
@@ -68,19 +71,21 @@ world_map = {
     },
     'XBOX': {
         'NAME': 'Xbox',
-        'DESCRIPTION': "You are next to xbox and you seem to be able to jump onto it. You see a door next to you as well, as a path to the South...",
+        'DESCRIPTION': "You are next to xbox and you seem to be able to jump onto it. You see a door\n"
+                       " next to you as well, as a path to the South...",
         'PATHS': {
             'NORTH': 'MIDDOORS',
             'SOUTH': 'TOPMID',
 
         }
     },
-    'MIDDOORS': 'Mid Doors',
+    'MIDDOORS': {
+        'NAME': 'Mid Doors',
         'DESCRIPTION': "You are at Mid Doors, and there are two paths leading to west and east",
         'PATHS': {
-        'EAST': 'IONIA',
-        'SOUTH': 'XBOX',
-        'WEST': 'HOWLING MARSH'
+            'EAST': 'IONIA',
+            'SOUTH': 'XBOX',
+            'WEST': 'HOWLING MARSH'
         }
     },
     'SHADOWISLE': 'Shadow Isle',
