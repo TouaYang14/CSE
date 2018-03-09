@@ -22,7 +22,7 @@ outsideoflongdoors = Room('outsideoflongdoors', 'long', 'noxus', None, 'top_mid'
                           ' of Long Doors')
 longdoors = Room('longdoors', None, 'outsideoflondoors', None, 'long', 'smoke_capsule', None, 'You are in\n'
                  ' Long Doors, you see 5 boxes on top of each other')
-long = Room('long', 'Icathia', 'outsideoflongdoors', None, None, None, None, 'You are at Long, you see a mist of\n'
+long = Room('long', 'icathia', 'outsideoflongdoors', None, None, None, None, 'You are at Long, you see a mist of\n'
             ' clouds north.')
 tunnels = Room('tunnels', 'howling_marsh', 'outsideoftunnels', 'lower_tunnels', None, 'battle_axe', '\n'
                'small_health_potion', 'You are inside\n'
@@ -31,12 +31,12 @@ lowertunnels = Room('lowertunnels', None, None, 'mid', 'tunnels', 'clock', 'comp
                     'see a clock and a compass on the table')
 mid = Room('mid', 'mid_doors', 'top_mid', 'staircase', 'lowertunnels', None, None, 'You are at mid and you see a door\n'
            'north, you see a hallway leading to a stair to the east.')
-staircase = Room('staircase', None, 'top_mid', None, 'mid', None, None, 'You see a hallway turning right, and it is\n'
+staircase = Room('staircase', 'shadow_isle', 'top_mid', None, 'mid', None, None, 'You see a hallway turning right, and it is\n'
                  ' leading to a stair case, with dark and misty clouds. As your feet tremble you hear a sound.')
-shadow_isle = Room('shadow_isle', None, 'staircase', 'long', None, 'shadow_hammer', 'shadow_armor', 'You\n'
+shadow_isle = Room('shadow_isle', None, 'staircase', 'icathia', None, 'shadow_hammer', 'shadow_armor', 'You\n'
                    ' are finally in the Shadow Isle and there are thick clouds. You feel\n'
                    ' as if someone is watching you, and you see a hammer laying on the ground.')
-icathia = Room('icathia', 'goose', 'long', None, 'ionia', 'wings', None, 'You are in icathia and you\n'
+icathia = Room('icathia', 'goose', 'long', None, 'shadow_isle', 'wings', None, 'You are in icathia and you\n'
                ' a pair of wings lying on the ground')
 ionia = Room('ionia', None, None, 'shadow_isle', 'mid_doors', None, None, 'You have finally reached Ionia.')
 goose = Room('goose', None, 'icathia', None, None, 'egg', None, 'You are in the ally\n'
@@ -46,7 +46,8 @@ howling_marsh = Room('howling_marsh', None, 'tunnels', 'mid_doors', None, 'fogog
 top_mid = Room('top_mid', 'mid', 'noxus', 'outsideoflongdoors', None, None, None, "You\n'"
                "are at the top of mid. You don't see\n"
                " anything particular that is interesting at all. You see a ramp going down to the north.")
-
+mid_doors = Room('mid_doors', None, 'mid', 'ionia', 'howling_marsh', None, None, 'You\n'
+                 ' are at mid doors, and to your west you see a shadowing place, and to your right is ionia.')
 
 current_node = noxus
 directions = ['north', 'south', 'east', 'west']
