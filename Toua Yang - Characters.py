@@ -9,6 +9,9 @@ class Character(object):
         self.dialogue = dialogue
         self.attack = attack
 
+    def move(self):
+        
+
 
 snapper = Character('snapper', 'wooden_stick', 'water_spiral', 'ATK = 97, DEF = 53', 'HP = 500', "Snapper\n"
                     " is a turtle that knows martial art and is seeking to find a way to get stronger.", "Snapper\n"
