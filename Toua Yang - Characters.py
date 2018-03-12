@@ -10,7 +10,7 @@ class Character(object):
         self.attack = attack
 
     def move(self):
-        
+
 
 
 snapper = Character('snapper', 'wooden_stick', 'water_spiral', 'ATK = 97, DEF = 53', 'HP = 500', "Snapper\n"

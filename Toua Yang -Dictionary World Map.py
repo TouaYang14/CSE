@@ -93,7 +93,13 @@ world_map = {
         'PATHS': {
             'EAST': 'ICATHIA',
             'WEST': 'IONIA'
-    }
+        }
+    },
+    'GOOSE': "Goose",
+        'DESCRIPTION': "You are in goose. You see a painting that says goose",
+        'PATHS': {
+            'SOUTH': 'ICATHIA',
+        }
 }
 
 current_node = world_map['NOXUS'],
