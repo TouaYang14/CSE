@@ -15,25 +15,26 @@ class Room(object):
 
 
 # Intialize Rooms
-noxus = Room('noxus', 'top_mid', None, 'outsideoflongdoors', 'outsideoftunnels', 'wooden_sword', 'wooden_shield', '\n'
+noxus = Room('noxus', 'top_mid', None, 'outsideoflongdoors', 'outsideoftunnels', 'Wooden_sword', 'Wooden_shield', '\n'
              'You are in Noxus, you must find a way to get to Ionia')
 outsideoftunnels = Room('outsideoftunnels', 'tunnels', 'noxus', None, None, None, None, 'You are outside of Tunnels')
 outsideoflongdoors = Room('outsideoflongdoors', 'long', 'noxus', None, 'top_mid', None, None, 'You are outside\n'
                           ' of Long Doors')
-longdoors = Room('longdoors', None, 'outsideoflondoors', None, 'long', 'smoke_capsule', None, 'You are in\n'
+longdoors = Room('longdoors', None, 'outsideoflondoors', None, 'long', 'Smoke_Capsule', None, 'You are in\n'
                  ' Long Doors, you see 5 boxes on top of each other')
 long = Room('long', 'icathia', 'outsideoflongdoors', None, None, None, None, 'You are at Long, you see a mist of\n'
             ' clouds north.')
-tunnels = Room('tunnels', 'howling_marsh', 'outsideoftunnels', 'lower_tunnels', None, 'battle_axe', '\n'
+tunnels = Room('tunnels', 'howling_marsh', 'outsideoftunnels', 'lower_tunnels', None, 'Battle_Axe', '\n'
                'small_health_potion', 'You are inside\n'
                ' of Tunnels, you see a staircase leading down from the east, and light from the north')
-lowertunnels = Room('lowertunnels', None, None, 'mid', 'tunnels', 'clock', 'compass', 'You are in lower tunnels, you\n'
+lowertunnels = Room('lowertunnels', None, None, 'mid', 'tunnels', 'Clock', 'Compass', 'You are in lower tunnels, you\n'
                     'see a clock and a compass on the table')
 mid = Room('mid', 'mid_doors', 'top_mid', 'staircase', 'lowertunnels', None, None, 'You are at mid and you see a door\n'
            'north, you see a hallway leading to a stair to the east.')
-staircase = Room('staircase', 'shadow_isle', 'top_mid', None, 'mid', None, None, 'You see a hallway turning right, and it is\n'
+staircase = Room('staircase', 'shadow_isle', 'top_mid', None, 'mid', None, None, 'You see a hallway\n'
+                 ' turning right, and it is\n'
                  ' leading to a stair case, with dark and misty clouds. As your feet tremble you hear a sound.')
-shadow_isle = Room('shadow_isle', None, 'staircase', 'icathia', None, 'shadow_hammer', 'shadow_armor', 'You\n'
+shadow_isle = Room('shadow_isle', None, 'staircase', 'icathia', None, 'shadow_hammer', None, 'You\n'
                    ' are finally in the Shadow Isle and there are thick clouds. You feel\n'
                    ' as if someone is watching you, and you see a hammer laying on the ground.')
 icathia = Room('icathia', 'goose', 'long', None, 'shadow_isle', 'wings', None, 'You are in icathia and you\n'

@@ -9,11 +9,23 @@ class Character(object):
         self.dialogue = dialogue
         self.attack = attack
 
-    def move(self):
+    def heal(self):
+        if self.health <= 5:
+            self.health += 25
+
+    def attack(self):
+        if self.attack >= JohnnyNPC.health:
+            print("Johnny has died")
+        else:
+            JohnnyNPC.health = self.attack - JohnnyNPC.health
+
+    def
 
 
-
-snapper = Character('snapper', 'wooden_stick', 'water_spiral', 'ATK = 97, DEF = 53', 'HP = 500', "Snapper\n"
+Snapper = Character('Snapper', 'wooden_stick', 'water_spiral', 'ATK = 37, DEF = 53', 500, "Snapper\n"
                     " is a turtle that knows martial art and is seeking to find a way to get stronger.", "Snapper\n"
                     " was born in a small village and seeks a fighting spirit. Ever since he was a small kid he\n"
-                    " has been trying to get stronger. He is seeking to master the water style", 'ATK = 97')
+                    " has been trying to get stronger. He is seeking to master the water style", 37)
+
+JohnnyNPC = Character('Johnny', 'Wooden_Sword', 'Basic_Attack', 'ATK = 21, DEF = 17', 200, None, None, 21)
+
