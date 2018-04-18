@@ -8,7 +8,7 @@ class Character(object):
         self.description = description
         self.dialogue = dialogue
         self.attack = attack
-        self.money = 0
+        self.money = money
         self.item = item
 
     def heal(self):
@@ -22,11 +22,12 @@ class Character(object):
             JohnnyNPC.health = self.attack - JohnnyNPC.health
 
     def sell(self):
-        if self.sell += money:
-            print("You have sold the item")
+        item = input("What do you want to sell? ")
+        if item in Snapper:
+            print("You have sold the %s" % item)
+            Snapper.inventory.pop(item)
 
-    def equip(self):
-        if self.equip = 
+
 
 
 Snapper = Character("Snapper", 'wooden_stick', 'water_spiral', 'DEF = 53', 500, "Snapper\n"
