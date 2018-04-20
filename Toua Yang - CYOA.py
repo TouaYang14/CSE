@@ -103,14 +103,13 @@ class SteelShield(Weapons):
 
 
 class Character(object):
-    def __init__(self, name, inventory, health, armor, description, dialogue):
+    def __init__(self, name, health, armor, description, dialogue):
         self.name = name
-        self.inventory = inventory
+        self.inventory = []
         self.health = health
         self.armor = armor
         self.description = description
         self.dialogue = dialogue
-
     def heal(self):
         if self.health <= 5:
             self.health += 25
@@ -197,6 +196,11 @@ directions = ['north', 'south', 'east', 'west']
 short_direction = ['n', 's', 'e', 'w']
 
 while True:
+    if Item in current_node is not None:
+        print("Do you want pick up the item bro?")
+        print(Item.name)
+    if command == ('take %s' % Item.name)
+        Item.append.inventory
     print(current_node.name)
     print(current_node.description)
     command = input('>_').lower()

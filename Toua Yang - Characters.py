@@ -27,6 +27,10 @@ class Character(object):
             print("You have sold the %s" % item)
             Snapper.inventory.pop(item)
 
+    def block(self):
+        if self.block >= JohnnyNPC.block:
+            print("You blocked the enemy's attack")
+
 
 
 
