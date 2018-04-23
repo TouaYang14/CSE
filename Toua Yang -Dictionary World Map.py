@@ -88,19 +88,30 @@ world_map = {
             'WEST': 'HOWLING MARSH'
         }
     },
-    'SHADOWISLE': 'Shadow Isle',
+    'SHADOWISLE': {
+        'NAME': 'Shadow Isle',
         'DESCRIPTION': "You are in the Shadow Isle and the air became thick again.. It is very foggy and dark..",
         'PATHS': {
             'EAST': 'ICATHIA',
             'WEST': 'IONIA'
         }
     },
-    'GOOSE': "Goose",
+    'GOOSE': {
+        'NAME': 'Goose',
         'DESCRIPTION': "You are in goose. You see a painting that says goose",
         'PATHS': {
-            'SOUTH': 'ICATHIA',
+            'SOUTH': 'ICATHIA'
         }
-}
+    },
+    'MID': {
+        'NAME': 'Mid',
+        'DESCRIPTON': "You are in mid and you see a tunnel to the west",
+        'PATHS': {
+            'NORTH': 'MIDDOORS'
+            'SOUTH': 'TOPMID'
+        }
+    },
+
 
 current_node = world_map['NOXUS'],
 directions = ['NORTH', 'SOUTH', 'EAST', 'WEST']

@@ -130,10 +130,10 @@ steelsword = SteelSword()
 steelshield = SteelShield()
 
 
-Snapper = Character('Snapper', None, 320, 0, "Snapper is a turtle , that is seeking to Ionia\n"
+Snapper = Character('Snapper', 320, 0, "Snapper is a turtle , that is seeking to Ionia\n"
                     " so he can deliver a message to the Master", None)
 
-Villager1 = Character('Tom', None, 200, 0, 'A villager that is wondering around the town.', None)
+Villager1 = Character('Tom', 200, 0, 'A villager that is wondering around the town.', None)
 
 
 class Room(object):
