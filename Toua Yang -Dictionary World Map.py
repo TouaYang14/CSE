@@ -105,12 +105,38 @@ world_map = {
     },
     'MID': {
         'NAME': 'Mid',
-        'DESCRIPTON': "You are in mid and you see a tunnel to the west",
+        'DESCRIPTION': "You are in mid and you see a tunnel to the west",
         'PATHS': {
-            'NORTH': 'MIDDOORS'
+            'NORTH': 'MIDDOORS',
             'SOUTH': 'TOPMID'
         }
     },
+    'LONG': {
+        'NAME': 'Long',
+        'DESCRIPTION': "You are at Long... There is a way south and a way north but no west or east.",
+        'PATHS': {
+            'SOUTH': 'LONGDOORS',
+            'NORTH': 'ICATHIA'
+        }
+    },
+    'ICATHIA': {
+        'NAME': 'Icahia',
+        'DESCRIPTION': "You are in Icathia",
+        'PATHS': {
+            'SOUTH': 'LONG',
+            'WEST': 'SHADOWISLE'
+        }
+    },
+    'STAIRCASE': {
+        'NAME': 'Staircase',
+        'DESCRIPTION': "You are in staircase",
+        'PATHS': {
+            'SOUTH': 'TOPMID',
+            'EAST': 'MID',
+            'NORTH': 'SHADOWISLE'
+        }
+    }
+}
 
 
 current_node = world_map['NOXUS'],
