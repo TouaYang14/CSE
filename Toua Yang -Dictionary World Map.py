@@ -23,7 +23,8 @@ world_map = {
         'NAME': 'Outside of Long Doors',
         'DESCRIPTION': "You are outside of Long Doors",
         'PATHS': {
-            'NORTH': 'LONGDOORS'
+            'NORTH': 'LONGDOORS',
+            'WEST': 'TOPMID'
         }
     },
     'LONGDOORS': {
@@ -57,7 +58,8 @@ world_map = {
         'DESCRIPTION': "You are in Howling Marsh, the air around you becomes thick and you feel as if someone is\n"
                        " watching you... You see a window to the east that is broken but light is coming from it",
         'PATHS': {
-            'EAST': ' ROADTOIONIA'
+            'EAST': 'MIDDOORS',
+            'SOUTH': 'TUNNELS'
         }
     },
     'LOWERTUNNELS': {
@@ -66,7 +68,7 @@ world_map = {
                        " from the east, and stairs going up leading to the west...",
         'PATHS': {
             'EAST': 'XBOX',
-            'WEST': 'Tunnels'
+            'WEST': 'TUNNELS'
         }
     },
     'XBOX': {
@@ -93,7 +95,7 @@ world_map = {
         'DESCRIPTION': "You are in the Shadow Isle and the air became thick again.. It is very foggy and dark..",
         'PATHS': {
             'EAST': 'ICATHIA',
-            'WEST': 'IONIA'
+            'WEST': 'STAIRCASE'
         }
     },
     'GOOSE': {
@@ -108,7 +110,9 @@ world_map = {
         'DESCRIPTION': "You are in mid and you see a tunnel to the west",
         'PATHS': {
             'NORTH': 'MIDDOORS',
-            'SOUTH': 'TOPMID'
+            'SOUTH': 'TOPMID',
+            'WEST': 'LOWERTUNNELS',
+            'EAST': 'STAIRCASE'
         }
     },
     'LONG': {
@@ -132,15 +136,17 @@ world_map = {
         'DESCRIPTION': "You are in staircase",
         'PATHS': {
             'SOUTH': 'TOPMID',
-            'EAST': 'MID',
+            'WEST': 'MID',
             'NORTH': 'SHADOWISLE'
         }
     }
 }
 
 
-current_node = world_map['NOXUS'],
+current_node = world_map['NOXUS']
 directions = ['NORTH', 'SOUTH', 'EAST', 'WEST']
+
+
 
 while True:
     print(current_node['NAME'])
