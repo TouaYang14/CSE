@@ -72,8 +72,7 @@ class Equipment(Item):
 class Armor(Equipment):
     def __init__(self):
         super(Armor, self).__init__('Armor for the chest', 'Chestplate, where\n'
-                                                                    ' only those who have enough potential can use it',
-                                                                    500)
+                                    ' only those who have enough potential can use it', 500)
 
 
 class BootsOfSwiftness(Equipment):
@@ -103,17 +102,17 @@ class SteelShield(Weapons):
 
 
 class Character(object):
-    def __init__(self, name, health, armor, description, dialogue):
+    def __init__(self, name, health, inventory, armor, description, dialogue):
         self.name = name
-        self.inventory = []
+        self.inventory = inventory
         self.health = health
         self.armor = armor
         self.description = description
         self.dialogue = dialogue
+
     def heal(self):
         if self.health <= 5:
             self.health += 25
-
 
 
 wooden_sword = WoodenSword()
@@ -130,10 +129,10 @@ steelsword = SteelSword()
 steelshield = SteelShield()
 
 
-Snapper = Character('Snapper', 320, 0, "Snapper is a turtle , that is seeking to Ionia\n"
+Snapper = Character('Snapper', 320, 0, [wooden_sword], "Snapper is a turtle , that is seeking to Ionia\n"
                     " so he can deliver a message to the Master", None)
 
-Villager1 = Character('Tom', 200, 0, 'A villager that is wondering around the town.', None)
+Villager1 = Character('Tom', 200, None, 0, 'A villager that is wondering around the town.', None)
 
 
 class Room(object):
@@ -172,7 +171,7 @@ pit = Room('pit', 'long', 'pitdoor', 'longdoors', None, None, 'The pit.. There i
 pitdoor = Room('pitdoor', 'pit', None, None, None, wings, 'Where the wings lies. You see the wing on the ground')
 staircase = Room('staircase', 'shadow_isle', 'top_mid', None, 'mid', None, 'You see a hallway\n'
                  ' turning right, and it is\n'
-               ' leading to a stair case, with dark and misty clouds. As your feet tremble you hear a sound.')
+                 ' leading to a stair case, with dark and misty clouds. As your feet tremble you hear a sound.')
 shadow_isle = Room('shadow_isle', None, 'staircase', 'icathia', None, gauntlet, 'You\n'
                    ' are finally in the Shadow Isle and there are thick clouds. You feel\n'
                    ' as if someone is watching you, and you see a steel shield laying on the ground.')
@@ -196,14 +195,14 @@ directions = ['north', 'south', 'east', 'west']
 short_direction = ['n', 's', 'e', 'w']
 
 while True:
+    command = input('>_').lower()
     if Item in current_node is not None:
-        print("Do you want pick up the item bro?")
+        print("Do you want pick up the item?")
         print(Item.name)
-    if command == ('take %s' % Item.name)
-        Item.append.inventory
+    if command == ('take %s' % Item.name):
+        Snapper.inventory.append(Item.name)
     print(current_node.name)
     print(current_node.description)
-    command = input('>_').lower()
     if command == 'quit':
         quit(0)
     elif command in short_direction:
