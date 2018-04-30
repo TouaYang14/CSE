@@ -8,11 +8,12 @@
 
 
 class Item(object):
-    def __init__(self, description, name):
+    def __init__(self, name, description):
         self.equip = False
         self.unequip = True
-        self.description = description
         self.name = name
+        self.description = description
+
 
     def use(self):
         print("You used the item")
@@ -129,7 +130,7 @@ steelsword = SteelSword()
 steelshield = SteelShield()
 
 
-Snapper = Character('Snapper', 320, 0, [wooden_sword], "Snapper is a turtle , that is seeking to Ionia\n"
+Snapper = Character('Snapper', 320, [wooden_sword], 0, "Snapper is a turtle , that is seeking to Ionia\n"
                     " so he can deliver a message to the Master", None)
 
 Villager1 = Character('Tom', 200, None, 0, 'A villager that is wondering around the town.', None)
@@ -196,7 +197,7 @@ short_direction = ['n', 's', 'e', 'w']
 
 while True:
     command = input('>_').lower()
-    if Item in current_node is not None:
+    if current_node.items is not None:
         print("Do you want pick up the item?")
         print(Item.name)
     if command == ('take %s' % Item.name):
