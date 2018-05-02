@@ -15,9 +15,6 @@ class Item(object):
         self.description = description
 
 
-    def use(self):
-        print("You used the item")
-
 
 class Weapons(Item):
     def __init__(self, attack, block, name, description):
@@ -197,11 +194,14 @@ short_direction = ['n', 's', 'e', 'w']
 
 while True:
     command = input('>_').lower()
+    for Player in command:
+        if Item is not None in command:
+            print("Do you wanna pick up item")
     if current_node.items is not None:
         print("Do you want pick up the item?")
-        print(Item.name)
-    if command == ('take %s' % Item.name):
-        Snapper.inventory.append(Item.name)
+        print(Weapons.name)
+    if command == ('take %s' % Weapons.name):
+        Snapper.inventory.append(Weapons.name)
     print(current_node.name)
     print(current_node.description)
     if command == 'quit':
