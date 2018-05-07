@@ -15,7 +15,6 @@ class Item(object):
         self.description = description
 
 
-
 class Weapons(Item):
     def __init__(self, attack, block, name, description):
         super(Weapons, self).__init__('Tools that you use to do damage', 'Weapons')
@@ -27,34 +26,39 @@ class Weapons(Item):
         self.description = description
 
 
+class Dagger(Weapons):
+    def __init__(self, attack, block, name, description):
+        super(Dagger, self).__init__(attack, block, name, description)
+
+
 class WoodenSword(Weapons):
-    def __init__(self):
-        super(WoodenSword, self).__init__(57, 0, 'wooden_sword', 'a wooden sword')
+    def __init__(self, attack, block, name, description):
+        super(WoodenSword, self).__init__(attack, block, name, description)
 
 
 class Shield(Weapons):
-    def __init__(self):
-        super(Shield, self).__init__(0, 50, 'wooden_shield', 'An old rusty shield')
+    def __init__(self, attack, block, name, description):
+        super(Shield, self).__init__(attack, block, name, description)
 
 
 class BattleAxe(Weapons):
-    def __init__(self):
-        super(BattleAxe, self).__init__(90, 30, 'Battle_Axe', 'A Battle Axe')
+    def __init__(self, attack, block, name, description):
+        super(BattleAxe, self).__init__(attack, block, name, description)
 
 
 class Wings(Item):
-    def __init__(self):
-        super(Wings, self).__init__('Wings, that can make you fly', 'Wings')
+    def __init__(self, name, description):
+        super(Wings, self).__init__(name, description)
 
 
 class Clock(Item):
-    def __init__(self):
-        super(Clock, self).__init__('A clock that can tell you what time it is', 'Clock')
+    def __init__(self, name, description):
+        super(Clock, self).__init__(name, description)
 
 
 class Compass(Item):
-    def __init__(self):
-        super(Compass, self).__init__(' A compass that tells you where North, East, West, and South is', 'Compass')
+    def __init__(self, name, description):
+        super(Compass, self).__init__(name, description)
 
 
 class Equipment(Item):
@@ -68,35 +72,33 @@ class Equipment(Item):
 
 
 class Armor(Equipment):
-    def __init__(self):
-        super(Armor, self).__init__('Armor for the chest', 'Chestplate, where\n'
-                                    ' only those who have enough potential can use it', 500)
+    def __init__(self, name, description, value):
+        super(Armor, self).__init__(name, description, value)
 
 
 class BootsOfSwiftness(Equipment):
-    def __init__(self):
-        super(BootsOfSwiftness, self).__init__('BootsOfSwiftness', 'a boot that makes you go faster', 500)
+    def __init__(self, name, description, value):
+        super(BootsOfSwiftness, self).__init__(name, description, value)
 
 
 class PitKey(Item):
-    def __init__(self):
-        super(PitKey, self).__init__('The key that is require to open the door in pit at long', 'PitKey')
+    def __init__(self, name, description):
+        super(PitKey, self).__init__(name, description)
 
 
 class Gauntlet(Equipment):
-    def __init__(self):
-        super(Gauntlet, self).__init__('Gauntlet', 'A gauntlet that is used to wield some objects', 400)
+    def __init__(self, name, description, value):
+        super(Gauntlet, self).__init__(name, description, value)
 
 
 class SteelSword(Weapons):
-    def __init__(self):
-        super(SteelSword, self).__init__(68, 0, 'Steel Sword', 'A sturdy steel sword')
+    def __init__(self, attack, block, name, description):
+        super(SteelSword, self).__init__(attack, block, name, description)
 
 
 class SteelShield(Weapons):
-    def __init__(self):
-        super(SteelShield, self).__init__(100, 600, 'Steel Shield', 'A steel\n'
-                                                                    ' shield that is better than the wooden shield')
+    def __init__(self, attack, block, name, description):
+        super(SteelShield, self).__init__(attack, block, name, description)
 
 
 class Character(object):
@@ -113,8 +115,8 @@ class Character(object):
             self.health += 25
 
 
-wooden_sword = WoodenSword()
-shield = Shield()
+wooden_sword = WoodenSword(52, 0, 'Wooden Sword', 'A wooden sword')
+wooden_sword = Shield(0, 41, 'Wooden Shield', 'a wooden shield')
 battle_axe = BattleAxe()
 wings = Wings()
 clock = Clock()
@@ -125,6 +127,7 @@ pitkey = PitKey()
 gauntlet = Gauntlet()
 steelsword = SteelSword()
 steelshield = SteelShield()
+dagger = Dagger()
 
 
 Snapper = Character('Snapper', 320, [wooden_sword], 0, "Snapper is a turtle , that is seeking to Ionia\n"
@@ -193,11 +196,20 @@ directions = ['north', 'south', 'east', 'west']
 short_direction = ['n', 's', 'e', 'w']
 
 while True:
+    print(current_node.name)
+    print(current_node.description)
     command = input('>_').lower()
-    for Snapper in current_node:
-        if Item in current_node is True:
-            print("Do you wanna pick up item?")
-            print(Weapons.name)
+    # if Snapper in current_node:
+    if current_node.items is not None:
+        print("Do you wanna pick up item?")
+        for i in current_node.items:
+            print(i.name)
+    if command == 'take':
+        Snapper.inventory.append(current_node.items)
+        for i in Snapper.inventory:
+            print(i.name)
+
+
     if command == 'quit':
         quit(0)
     elif command in short_direction:
