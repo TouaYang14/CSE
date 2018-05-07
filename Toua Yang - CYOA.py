@@ -194,16 +194,10 @@ short_direction = ['n', 's', 'e', 'w']
 
 while True:
     command = input('>_').lower()
-    for Player in command:
-        if Item is not None in command:
-            print("Do you wanna pick up item")
-    if current_node.items is not None:
-        print("Do you want pick up the item?")
-        print(Weapons.name)
-    if command == ('take %s' % Weapons.name):
-        Snapper.inventory.append(Weapons.name)
-    print(current_node.name)
-    print(current_node.description)
+    for Snapper in current_node:
+        if Item in current_node is True:
+            print("Do you wanna pick up item?")
+            print(Weapons.name)
     if command == 'quit':
         quit(0)
     elif command in short_direction:
