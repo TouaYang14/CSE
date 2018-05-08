@@ -62,23 +62,26 @@ class Compass(Item):
 
 
 class Equipment(Item):
-    def __init__(self, name, description, value):
+    def __init__(self, name, defense, description, value):
         super(Equipment, self).__init__('Something that you wear', 'Equipment')
         self.equip = False
         self.unequip = True
         self.name = name
+        self.defense = defense
         self.description = description
         self.value = value
 
 
 class Armor(Equipment):
-    def __init__(self, name, description, value):
-        super(Armor, self).__init__(name, description, value)
+    def __init__(self, name, description, value, defense=0):
+        super(Armor, self).__init__(name, defense, description, value,)
+        self.defense = defense
 
 
 class BootsOfSwiftness(Equipment):
-    def __init__(self, name, description, value):
-        super(BootsOfSwiftness, self).__init__(name, description, value)
+    def __init__(self, name, description, value, defense=0):
+        super(BootsOfSwiftness, self).__init__(name, defense, description, value)
+        self.defense = defense
 
 
 class PitKey(Item):
@@ -87,8 +90,9 @@ class PitKey(Item):
 
 
 class Gauntlet(Equipment):
-    def __init__(self, name, description, value):
-        super(Gauntlet, self).__init__(name, description, value)
+    def __init__(self, name, description, value, defense=0):
+        super(Gauntlet, self).__init__(name, defense, description, value)
+        self.defense = defense
 
 
 class SteelSword(Weapons):
@@ -116,18 +120,18 @@ class Character(object):
 
 
 wooden_sword = WoodenSword(52, 0, 'Wooden Sword', 'A wooden sword')
-wooden_sword = Shield(0, 41, 'Wooden Shield', 'a wooden shield')
-battle_axe = BattleAxe()
-wings = Wings()
-clock = Clock()
-compass = Compass()
-armor = Armor()
-bootsofswiftness = BootsOfSwiftness()
-pitkey = PitKey()
-gauntlet = Gauntlet()
-steelsword = SteelSword()
-steelshield = SteelShield()
-dagger = Dagger()
+shield = Shield(0, 41, 'Wooden Shield', 'a wooden shield')
+battle_axe = BattleAxe(76, 0, 'Battle Axe', 'A powerful battle axe that was used in battle.')
+wings = Wings('Wings', 'wings that can make you fly')
+clock = Clock('Clock', 'a clock that tells you the time')
+compass = Compass('Compass', 'A compass that tells you what direction you are going')
+armor = Armor('Armor', 'a basic armor that will protect you from attacks', 100, 50)
+bootsofswiftness = BootsOfSwiftness('Boots of swiftness', 'Boots that make you go faster', 100, 30)
+pitkey = PitKey('Pitkey', 'The key that is required to unlock the door in pit')
+gauntlet = Gauntlet('Gauntlet', 'Gauntlets that protect nope', 100, 30)
+steelsword = SteelSword(105, 0, 'Steel Sword', 'A steel sword that is stronger than a wooden_sword')
+steelshield = SteelShield(0, 70, 'Steel Shield', 'a steel shield that is better then a wooden_shield')
+dagger = Dagger(38, 0, 'Dagger', 'A dagger that is fast at attacking, and is small that requires little space')
 
 
 Snapper = Character('Snapper', 320, [wooden_sword], 0, "Snapper is a turtle , that is seeking to Ionia\n"
@@ -208,8 +212,6 @@ while True:
         Snapper.inventory.append(current_node.items)
         for i in Snapper.inventory:
             print(i.name)
-
-
     if command == 'quit':
         quit(0)
     elif command in short_direction:
