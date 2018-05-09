@@ -114,9 +114,6 @@ class Character(object):
         self.description = description
         self.dialogue = dialogue
 
-    def heal(self):
-        if self.health <= 5:
-            self.health += 25
 
 
 wooden_sword = WoodenSword(52, 0, 'Wooden Sword', 'A wooden sword')
@@ -158,14 +155,14 @@ class Room(object):
 # Intialize Rooms
 noxus = Room('noxus', 'top_mid', None, 'outsideoflongdoors', 'outsideoftunnels', None, 'You are in Noxus, you must\n'
                                                                                        ' find a way to get to Ionia')
-outsideoftunnels = Room('outsideoftunnels', 'tunnels', 'noxus', None, None, wooden_sword, 'You are outside of Tunnels')
+outsideoftunnels = Room('outsideoftunnels', 'tunnels', 'noxus', None, None, [wooden_sword], 'You are outside of Tunnels')
 outsideoflongdoors = Room('outsideoflongdoors', 'longdoors', 'noxus', None, 'top_mid', None, 'You are outside\n'
                           ' of Long Doors')
-longdoors = Room('longdoors', None, 'outsideoflongdoors', 'long', None, armor, 'You are in\n'
+longdoors = Room('longdoors', None, 'outsideoflongdoors', 'long', None, [armor], 'You are in\n'
                  ' Long Doors, you see 5 boxes on top of each other')
 long = Room('long', 'icathia', None, None, 'longdoors', None, 'You are at Long, you see a mist of\n'
             ' clouds north.')
-tunnels = Room('tunnels', 'howling_marsh', 'outsideoftunnels', 'lower_tunnels', None, battle_axe, 'You are inside\n'
+tunnels = Room('tunnels', 'howling_marsh', 'outsideoftunnels', 'lower_tunnels', None, [battle_axe], 'You are inside\n'
                ' of Tunnels, and you see an axe, you see a staircase leading down from the\n'
                ' east, and light from the north')
 lower_tunnels = Room('lower_tunnels', None, None, 'mid', 'tunnels', [clock, compass], 'You are in lower\n'
@@ -173,20 +170,20 @@ lower_tunnels = Room('lower_tunnels', None, None, 'mid', 'tunnels', [clock, comp
 mid = Room('mid', 'mid_doors', 'top_mid', 'staircase', 'lower_tunnels', None, 'You are at mid and you see a\n'
            'door to the west and a door to the north.')
 pit = Room('pit', 'long', 'pitdoor', 'longdoors', None, None, 'The pit.. There is a door to the south')
-pitdoor = Room('pitdoor', 'pit', None, None, None, wings, 'Where the wings lies. You see the wing on the ground')
+pitdoor = Room('pitdoor', 'pit', None, None, None, [wings], 'Where the wings lies. You see the wing on the ground')
 staircase = Room('staircase', 'shadow_isle', 'top_mid', None, 'mid', None, 'You see a hallway\n'
                  ' turning right, and it is\n'
                  ' leading to a stair case, with dark and misty clouds. As your feet tremble you hear a sound.')
-shadow_isle = Room('shadow_isle', None, 'staircase', 'icathia', None, gauntlet, 'You\n'
+shadow_isle = Room('shadow_isle', None, 'staircase', 'icathia', None, [gauntlet], 'You\n'
                    ' are finally in the Shadow Isle and there are thick clouds. You feel\n'
                    ' as if someone is watching you, and you see a steel shield laying on the ground.')
-icathia = Room('icathia', 'goose', 'long', None, 'shadow_isle', bootsofswiftness, 'You are in Icathia, this City\n'
+icathia = Room('icathia', 'goose', 'long', None, 'shadow_isle', [bootsofswiftness], 'You are in Icathia, this City\n'
                ' is close to Ionia')
 ionia = Room('ionia', None, None, None, 'mid_doors', None, 'You have finally reached Ionia, and people\n'
              'welcome you to the City.')
-goose = Room('goose', None, 'icathia', None, None, steelsword, 'You are in the ally\n'
+goose = Room('goose', None, 'icathia', None, None, [steelsword], 'You are in the ally\n'
              ' of goose, it is a small ally wih a small, you see a shield lying on the ground.')
-howling_marsh = Room('howling_marsh', None, 'tunnels', 'mid_doors', None, steelshield, 'You are in Howling\n'
+howling_marsh = Room('howling_marsh', None, 'tunnels', 'mid_doors', None, [steelshield], 'You are in Howling\n'
                      ' Marsh.... You feel as very unsafe and see dead trees everywhere.')
 top_mid = Room('top_mid', 'mid', 'noxus', 'outsideoflongdoors', None, None, "You\n'"
                "are at the top of mid. You don't see\n"
