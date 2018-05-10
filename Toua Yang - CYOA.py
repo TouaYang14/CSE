@@ -72,9 +72,9 @@ class Equipment(Item):
         self.value = value
 
 
-class Armor(Equipment):
+class Chestplatearmor(Equipment):
     def __init__(self, name, description, value, defense=0):
-        super(Armor, self).__init__(name, defense, description, value,)
+        super(Chestplatearmor, self).__init__(name, defense, description, value,)
         self.defense = defense
 
 
@@ -122,7 +122,7 @@ battle_axe = BattleAxe(76, 0, 'Battle Axe', 'A powerful battle axe that was used
 wings = Wings('Wings', 'wings that can make you fly')
 clock = Clock('Clock', 'a clock that tells you the time')
 compass = Compass('Compass', 'A compass that tells you what direction you are going')
-armor = Armor('Armor', 'a basic armor that will protect you from attacks', 100, 50)
+chestplatearmor = Chestplatearmor('Chestplatearmor', 'a basic armor that will protect you from attacks', 100, 50)
 bootsofswiftness = BootsOfSwiftness('Boots of swiftness', 'Boots that make you go faster', 100, 30)
 pitkey = PitKey('Pitkey', 'The key that is required to unlock the door in pit')
 gauntlet = Gauntlet('Gauntlet', 'Gauntlets that protect nope', 100, 30)
@@ -158,7 +158,7 @@ noxus = Room('noxus', 'top_mid', None, 'outsideoflongdoors', 'outsideoftunnels',
 outsideoftunnels = Room('outsideoftunnels', 'tunnels', 'noxus', None, None, [wooden_sword], 'You are outside of Tunnels')
 outsideoflongdoors = Room('outsideoflongdoors', 'longdoors', 'noxus', None, 'top_mid', None, 'You are outside\n'
                           ' of Long Doors')
-longdoors = Room('longdoors', None, 'outsideoflongdoors', 'long', None, [armor], 'You are in\n'
+longdoors = Room('longdoors', None, 'outsideoflongdoors', 'long', None, [chestplatearmor], 'You are in\n'
                  ' Long Doors, you see 5 boxes on top of each other')
 long = Room('long', 'icathia', None, None, 'longdoors', None, 'You are at Long, you see a mist of\n'
             ' clouds north.')
