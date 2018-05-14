@@ -158,7 +158,7 @@ noxus = Room('noxus', 'top_mid', None, 'outsideoflongdoors', 'outsideoftunnels',
 outsideoftunnels = Room('outsideoftunnels', 'tunnels', 'noxus', None, None, [wooden_sword], 'You are outside of Tunnels')
 outsideoflongdoors = Room('outsideoflongdoors', 'longdoors', 'noxus', None, 'top_mid', None, 'You are outside\n'
                           ' of Long Doors')
-longdoors = Room('longdoors', None, 'outsideoflongdoors', 'long', None, [chestplatearmor], 'You are in\n'
+longdoors = Room('longdoors', None, 'outsideoflongdoors', 'long', None, chestplatearmor, 'You are in\n'
                  ' Long Doors, you see 5 boxes on top of each other')
 long = Room('long', 'icathia', None, None, 'longdoors', None, 'You are at Long, you see a mist of\n'
             ' clouds north.')
@@ -203,6 +203,8 @@ while True:
         if current_node.items == None:
             print("There aren't any items in here.")
         else:
+            for a in current_node.items:
+                print(a.items.name)
             print(current_node.items)
             i = input("What item do you want to take? ")
             if i in current_node.items:
