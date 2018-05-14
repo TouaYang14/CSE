@@ -181,12 +181,11 @@ icathia = Room('icathia', 'goose', 'long', None, 'shadow_isle', [bootsofswiftnes
                ' is close to Ionia')
 ionia = Room('ionia', None, None, None, 'mid_doors', None, 'You have finally reached Ionia, and people\n'
              'welcome you to the City.')
-goose = Room('goose', None, 'icathia', None, None, [steelsword], 'You are in the ally\n'
+goose = Room('goose', None, 'icathia', None, None, [steelshield], 'You are in the ally\n'
              ' of goose, it is a small ally wih a small, you see a shield lying on the ground.')
-howling_marsh = Room('howling_marsh', None, 'tunnels', 'mid_doors', None, [steelshield], 'You are in Howling\n'
+howling_marsh = Room('howling_marsh', None, 'tunnels', 'mid_doors', None, [steelsword], 'You are in Howling\n'
                      ' Marsh.... You feel as very unsafe and see dead trees everywhere.')
 top_mid = Room('top_mid', 'mid', 'noxus', 'outsideoflongdoors', None, None, "You\n'"
-               "are at the top of mid. You don't see\n"
                " anything particular that is interesting at all. You see a ramp going down to the north.")
 mid_doors = Room('mid_doors', None, 'mid', 'ionia', 'howling_marsh', None,'You are at mid doors, and to your west you\n'
                  ' see a shadowing place, and to your right is ionia.')
@@ -200,15 +199,18 @@ while True:
     print(current_node.name)
     print(current_node.description)
     command = input('>_').lower()
-    if current_node.items is not None:
-        print("Do you wanna pick up item?")
-        for i in current_node.items:
-            print(i.name)
     if command == 'take':
-        current_node.items = None
-        Snapper.inventory.append(current_node.items)
-        for i in Snapper.inventory:
-            print(i.name)
+        if current_node.items == None:
+            print("There aren't any items in here.")
+        else:
+            print(current_node.items)
+            i = input("What item do you want to take? ")
+            if i in current_node.items:
+                Snapper.inventory.append(i)
+                current_node.items.pop(i)
+                print(Snapper.inventory)
+                for i in Snapper.inventory:
+                    print(i.name)
     if command == 'quit':
         quit(0)
     elif command in short_direction:
@@ -217,7 +219,7 @@ while True:
         # Change the command to be the long form
         command = directions[pos]
     if command == 'inv':
-        print(Snapper.inventory)
+        print("\n".join(Snapper.inventory))
     elif command in directions:
         try:
             current_node.move(command)
