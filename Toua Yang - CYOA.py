@@ -194,37 +194,21 @@ mid_doors = Room('mid_doors', None, 'mid', 'ionia', 'howling_marsh', None,'You a
 current_node = noxus
 directions = ['north', 'south', 'east', 'west']
 short_direction = ['n', 's', 'e', 'w']
+all_commands = ['yes', 'inv']
 
 while True:
     print(current_node.name)
     print(current_node.description)
-    command = input('>_').lower()
-<<<<<<< HEAD
-    if command == 'take':
-        if current_node.items == None:
-            print("There aren't any items in here.")
-        else:
-            for a in current_node.items:
-                print(a.items.name)
-            print(current_node.items)
-            i = input("What item do you want to take? ")
-            if i in current_node.items:
-                Snapper.inventory.append(i)
-                current_node.items.pop(i)
-                print(Snapper.inventory)
-                for i in Snapper.inventory:
-                    print(i.name)
-=======
-    # if Snapper in current_node:
     if current_node.items is not None:
         print("Do you wanna pick up item?")
-        for i in current_node.items:
-            print(i.name)
-    if command == 'take':
+        print(current_node.items.name)
+    command = input('>_').lower()
+
+    if command == 'yes':
+        print('You took %s.' % current_node.items.name)
         Snapper.inventory.append(current_node.items)
-        for i in Snapper.inventory:
-            print(i.name)
->>>>>>> parent of 9a6b384... Finished Inventory
+        current_node.items = None
+
     if command == 'quit':
         quit(0)
     elif command in short_direction:
@@ -232,16 +216,17 @@ while True:
         pos = short_direction.index(command)
         # Change the command to be the long form
         command = directions[pos]
-<<<<<<< HEAD
     if command == 'inv':
-        print("\n".join(Snapper.inventory))
+        for i in Snapper.inventory:
+            print(i.name)
     elif command in directions:
-=======
+        pass
+
     if command in directions:
->>>>>>> parent of 9a6b384... Finished Inventory
         try:
             current_node.move(command)
         except KeyError:
             print("You cannot go this way")
-    else:
+    elif command not in all_commands:
         print("Command not Recognized")
+    print('')
