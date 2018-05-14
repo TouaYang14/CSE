@@ -131,7 +131,7 @@ steelshield = SteelShield(0, 70, 'Steel Shield', 'a steel shield that is better 
 dagger = Dagger(38, 0, 'Dagger', 'A dagger that is fast at attacking, and is small that requires little space')
 
 
-Snapper = Character('Snapper', 320, [wooden_sword.name], 0, "Snapper is a turtle , that is seeking to Ionia\n"
+Snapper = Character('Snapper', 320, [wooden_sword], 0, "Snapper is a turtle , that is seeking to Ionia\n"
                     " so he can deliver a message to the Master", None)
 
 Villager1 = Character('Tom', 200, None, 0, 'A villager that is wondering around the town.', None)
@@ -199,6 +199,7 @@ while True:
     print(current_node.name)
     print(current_node.description)
     command = input('>_').lower()
+<<<<<<< HEAD
     if command == 'take':
         if current_node.items == None:
             print("There aren't any items in here.")
@@ -213,6 +214,17 @@ while True:
                 print(Snapper.inventory)
                 for i in Snapper.inventory:
                     print(i.name)
+=======
+    # if Snapper in current_node:
+    if current_node.items is not None:
+        print("Do you wanna pick up item?")
+        for i in current_node.items:
+            print(i.name)
+    if command == 'take':
+        Snapper.inventory.append(current_node.items)
+        for i in Snapper.inventory:
+            print(i.name)
+>>>>>>> parent of 9a6b384... Finished Inventory
     if command == 'quit':
         quit(0)
     elif command in short_direction:
@@ -220,9 +232,13 @@ while True:
         pos = short_direction.index(command)
         # Change the command to be the long form
         command = directions[pos]
+<<<<<<< HEAD
     if command == 'inv':
         print("\n".join(Snapper.inventory))
     elif command in directions:
+=======
+    if command in directions:
+>>>>>>> parent of 9a6b384... Finished Inventory
         try:
             current_node.move(command)
         except KeyError:
