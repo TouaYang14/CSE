@@ -106,14 +106,13 @@ class SteelShield(Weapons):
 
 
 class Character(object):
-    def __init__(self, name, health, inventory, armor, description, dialogue):
+    def __init__(self, name, health, armor, description, dialogue):
         self.name = name
-        self.inventory = inventory
         self.health = health
         self.armor = armor
         self.description = description
         self.dialogue = dialogue
-
+        self.inventory = []
 
 
 wooden_sword = WoodenSword(52, 0, 'Wooden Sword', 'A wooden sword')
@@ -131,10 +130,10 @@ steelshield = SteelShield(0, 70, 'Steel Shield', 'a steel shield that is better 
 dagger = Dagger(38, 0, 'Dagger', 'A dagger that is fast at attacking, and is small that requires little space')
 
 
-Snapper = Character('Snapper', 320, [], 0, "Snapper is a turtle , that is seeking to Ionia\n"
+Snapper = Character('Snapper', 320, 0, "Snapper is a turtle , that is seeking to Ionia\n"
                     " so he can deliver a message to the Master", None)
 
-Villager1 = Character('Tom', 200, None, 0, 'A villager that is wondering around the town.', None)
+Villager1 = Character('Tom', 200, 0, 'A villager that is wondering around the town.', None)
 
 
 class Room(object):
@@ -183,10 +182,11 @@ ionia = Room('ionia', None, None, None, 'mid_doors', None, 'You have finally rea
              'welcome you to the City.')
 goose = Room('goose', None, 'icathia', None, None, steelshield, 'You are in the ally\n'
              ' of goose, it is a small ally wih a small, you see a shield lying on the ground.')
-howling_marsh = Room('howling_marsh', None, 'tunnels', 'mid_doors', None, steelsword, 'You are in Howling\n'
-                     ' Marsh.... You feel as very unsafe and see dead trees everywhere.')
-top_mid = Room('top_mid', 'mid', 'noxus', 'outsideoflongdoors', None, None, "You\n'"
-               " anything particular that is interesting at all. You see a ramp going down to the north.")
+howling_marsh = Room('howling_marsh', None, 'tunnels', 'mid_doors', None, steelsword, 'You are in Howling Marsh....\n'
+                                                                                      'You feel as very unsafe \n'
+                                                                                      'and see dead trees everywhere.')
+top_mid = Room('top_mid', 'mid', 'noxus', 'outsideoflongdoors', None, None, "You don't\n'"
+               "see anything particular that is interesting at all. You see a ramp going down to the north.")
 mid_doors = Room('mid_doors', None, 'mid', 'ionia', 'howling_marsh', None,'You are at mid doors, and to your west you\n'
                  ' see a shadowing place, and to your right is ionia.')
 
@@ -217,12 +217,11 @@ while True:
         # Change the command to be the long form
         command = directions[pos]
     if command == 'inv':
-        for i in Snapper.inventory:
-            print(i.name)
+        if len(Snapper.inventory) > 0:
+            for i in Snapper.inventory:
+                print(i.name)
         else:
             print("You don't have anything yet")
-    if command in directions:
-        pass
 
     if command in directions:
         try:
