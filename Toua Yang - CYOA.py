@@ -159,16 +159,16 @@ outsideoflongdoors = Room('outsideoflongdoors', 'longdoors', 'noxus', None, 'top
                           ' of Long Doors')
 longdoors = Room('longdoors', None, 'outsideoflongdoors', 'long', None, chestplatearmor, 'You are in\n'
                  ' Long Doors, you see 5 boxes on top of each other')
-long = Room('long', 'icathia', None, None, 'longdoors', None, 'You are at Long, you see a mist of\n'
+long = Room('long', 'icathia', 'pit', None, 'longdoors', None, 'You are at Long, you see a mist of\n'
             ' clouds north.')
 tunnels = Room('tunnels', 'howling_marsh', 'outsideoftunnels', 'lower_tunnels', None, battle_axe, 'You are inside\n'
                ' of Tunnels, and you see an axe, you see a staircase leading down from the\n'
                ' east, and light from the north')
-lower_tunnels = Room('lower_tunnels', None, None, 'mid', 'tunnels', [clock, compass], 'You are in lower\n'
-                     ' tunnels, you see a clock and a compass on the table')
+lower_tunnels = Room('lower_tunnels', None, None, 'mid', 'tunnels', compass, 'You are in lower\n'
+                     ' tunnels, you see a compass on the table')
 mid = Room('mid', 'mid_doors', 'top_mid', 'staircase', 'lower_tunnels', None, 'You are at mid and you see a\n'
            'door to the west and a door to the north.')
-pit = Room('pit', 'long', 'pitdoor', 'longdoors', None, None, 'The pit.. There is a door to the south')
+pit = Room('pit', 'long', 'pitdoor', 'longdoors', None, clock, 'The pit.. There is a door to the south')
 pitdoor = Room('pitdoor', 'pit', None, None, None, wings, 'Where the wings lies. You see the wing on the ground')
 staircase = Room('staircase', 'shadow_isle', 'top_mid', None, 'mid', None, 'You see a hallway\n'
                  ' turning right, and it is\n'
@@ -200,8 +200,10 @@ while True:
     print(current_node.name)
     print(current_node.description)
     if current_node.items is not None:
+
         print("Do you wanna pick up item?")
         print(current_node.items.name)
+
     command = input('>_').lower()
 
     if command == 'yes':
