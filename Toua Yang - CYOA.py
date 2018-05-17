@@ -7,6 +7,16 @@
 # controller
 
 
+
+# print("__          ________ _      _____ ____  __  __ ______ \n"
+#  "\ \        / /  ____| |    / ____/ __ \|  \/  |  ____|\n"
+#   "\ \  /\  / /| |__  | |   | |   | |  | | \  / | |__   \n"
+#    "\ \/  \/ / |  __| | |   | |   | |  | | |\/| |  __|  \n"
+#     "\  /\  /  | |____| |___| |___| |__| | |  | | |____ \n"
+#      "\/  \/   |______|______\_____\____/|_|  |_|______|"
+
+
+")
 class Item(object):
     def __init__(self, name, description):
         self.equip = False
@@ -138,6 +148,7 @@ Enemy1 = Character('FireNationTrooper', 200, 0, 50, 'An enemy that wil attack yo
 
 Enemy2 = Character('FireNationGuard', 500, 0, 103, 'An enemy that wil attack you', None)
 
+
 class Room(object):
     def __init__(self, name, north, south, east, west, items, description, enemies):
         self.name = name
@@ -147,7 +158,7 @@ class Room(object):
         self.west = west
         self.items = items
         self.description = description
-        self.enemies = []
+        self.enemies = enemies
 
     def move(self, direction):
         global current_node
@@ -172,7 +183,7 @@ tunnels = Room('tunnels', 'howling_marsh', 'outsideoftunnels', 'lower_tunnels', 
 lower_tunnels = Room('lower_tunnels', None, None, 'mid', 'tunnels', compass, 'You are in lower\n'
                      ' tunnels, you see a compass on the table', None)
 mid = Room('mid', 'mid_doors', 'top_mid', 'staircase', 'lower_tunnels', None, 'You are at mid and you see a\n'
-           'door to the west and a door to the north.', [Enemy2])
+           'door to the west and a door to the north.', Enemy2)
 pit = Room('pit', 'long', 'pitdoor', 'longdoors', None, clock, 'The pit.. There is a door to the south', None)
 pitdoor = Room('pitdoor', 'pit', 'noxus', None, None, wings, 'Where the wings lies. You see the wing on the ground\n'
                                                              'and there is a portal to the south', None)
@@ -194,7 +205,8 @@ howling_marsh = Room('howling_marsh', None, 'tunnels', 'mid_doors', None, steels
                                                                                       'everywhere.', None)
 top_mid = Room('top_mid', 'mid', 'noxus', 'outsideoflongdoors', None, None, "You don't\n'"
                "see anything particular that is interesting at all. You see a ramp going down to the north.", None)
-mid_doors = Room('mid_doors', None, 'mid', 'ionia', 'howling_marsh', None,'You are at mid doors, and to your west you\n'
+mid_doors = Room('mid_doors', None, 'mid', 'ionia', 'howling_marsh', None,
+                 'You are at mid doors, and to your west you\n'
                  ' see a shadowing place, and to your right is ionia.', None)
 
 
@@ -207,24 +219,22 @@ while True:
     print(current_node.name)
     print(current_node.description)
     if current_node.items is not None:
-
         print("Do you wanna pick up item?")
         print(current_node.items.name)
 
     command = input('>_').lower()
 
-    if command == 'yes':
+    if command == 'yes' and current_node.items is not None:
         print('You took %s.' % current_node.items.name)
         Snapper.inventory.append(current_node.items)
         current_node.items = None
 
-    if current_node.character is not None:
-        command = input(">_")
-        print("There is an enemy here! The FIRE NATION IS HERE!!")
+    if command == 'use':
 
 
     if command == 'quit':
         quit(0)
+
     elif command in short_direction:
         # Look for which command we typed in
         pos = short_direction.index(command)
@@ -244,4 +254,5 @@ while True:
             print("You cannot go this way")
     elif command not in all_commands:
         print("Command not Recognized")
+
     print('')
