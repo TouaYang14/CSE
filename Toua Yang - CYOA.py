@@ -194,7 +194,7 @@ staircase = Room('staircase', 'shadow_isle', 'top_mid', None, 'mid', None, 'You 
 shadow_isle = Room('shadow_isle', None, 'staircase', 'icathia', None, gauntlet, 'You\n'
                    ' are finally in the Shadow Isle and there are thick clouds. You feel\n'
                    ' as if someone is watching you, and you see a steel shield laying on the ground.', None)
-icathia = Room('icathia', 'goose', 'long', None, 'shadow_isle', Rock, 'You are in Icathia, this City\n'
+icathia = Room('icathia', 'goose', 'long', None, 'shadow_isle', rock, 'You are in Icathia, this City\n'
                ' is close to Ionia', None)
 ionia = Room('ionia', None, None, None, 'mid_doors', None, 'You have finally reached Ionia, and people\n'
              'welcome you to the City.', None)
@@ -210,7 +210,6 @@ mid_doors = Room('mid_doors', None, 'mid', 'ionia', 'howling_marsh', None,
                  'You are at mid doors, and to your west you\n'
                  ' see a shadowing place, and to your right is ionia.', None)
 
-
 current_node = noxus
 directions = ['north', 'south', 'east', 'west']
 short_direction = ['n', 's', 'e', 'w']
@@ -222,27 +221,22 @@ while True:
     if current_node.items is not None:
         print("Do you wanna pick up item?")
         print(current_node.items.name)
-
+        command = input('>_').lower()
+        if command == 'yes':
+            print('You took %s.' % current_node.items.name)
+            Snapper.inventory.append(current_node.items)
+            current_node.items = None
+    else:
+        if command == 'no':
+            print("You did not pick up the item")
+    command = input('>_').lower()
     if current_node.enemies is not None:
         print("There is an Enemy here. IT'S THE %s" % current_node.enemies.name)
         print("What do you want to do?")
-        if command = 'fight':
-
-
-    command = input('>_').lower()
-
-    if command == 'yes' and current_node.items is not None:
-        print('You took %s.' % current_node.items.name)
-        Snapper.inventory.append(current_node.items)
-        current_node.items = None
-
-    if command == 'quit':
-        quit(0)
-
-    elif command in short_direction:
-        # Look for which command we typed in
+        if command == 'attack':
+            print("You attack the %s" % current_node.enemies.name)
+    if command in short_direction:
         pos = short_direction.index(command)
-        # Change the command to be the long form
         command = directions[pos]
     if command == 'inv':
         if len(Snapper.inventory) > 0:
@@ -258,5 +252,8 @@ while True:
             print("You cannot go this way")
     elif command not in all_commands:
         print("Command not Recognized")
+
+    if command == 'quit':
+            quit(0)
 
     print('')
