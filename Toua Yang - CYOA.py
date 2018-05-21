@@ -1,3 +1,4 @@
+import random
 # import statements
 # class definitions
 # items
@@ -5,7 +6,6 @@
 # rooms
 # instantiate classes
 # controller
-
 
 print("__          ________ _      _____ ____  __  __ ______ \n"
 " \ \        / /  ____| |    / ____/ __ \|  \/  |  ____|\n"
@@ -113,7 +113,7 @@ class SteelShield(Weapons):
 
 
 class Character(object):
-    def __init__(self, name, health, armor, damage, description, dialogue):
+    def __init__(self, name, health, armor, damage, description, dialogue, max_hp):
         self.name = name
         self.health = health
         self.armor = armor
@@ -121,6 +121,7 @@ class Character(object):
         self.description = description
         self.dialogue = dialogue
         self.inventory = []
+        self.max_hp = max_hp
 
     def take_damage(self, amount):
         self.health -= amount
@@ -143,11 +144,13 @@ dagger = Dagger(38, 0, 'Dagger', 'A dagger that is fast at attacking, and is sma
 
 
 Snapper = Character('Snapper', 320, 0, 50, "Snapper is a turtle , that is seeking to Ionia\n"
-                    " so he can deliver a message to the Master", None)
+                    " so he can deliver a message to the Master", None, 320)
 
-Enemy1 = Character('FireNationTrooper', 200, 0, 50, 'An enemy that wil attack you', None)
+Enemy1 = Character('FireNationTrooper', 200, 0, 50, 'An enemy that wil attack you', None, 200)
 
-Enemy2 = Character('FireNationGuard', 500, 0, 103, 'An enemy that wil attack you', None)
+Enemy2 = Character('FireNationGuard', 500, 0, 103, 'An enemy that wil attack you', None, 500)
+
+Enemy3 = Character('FireNationCaptain', 500, 40, 70, 'THE CAPTAIN OF THE FIRE NATIONS', None, 500)
 
 
 class Room(object):
@@ -208,7 +211,7 @@ top_mid = Room('top_mid', 'mid', 'noxus', 'outsideoflongdoors', None, None, "You
                "see anything particular that is interesting at all. You see a ramp going down to the north.", None)
 mid_doors = Room('mid_doors', None, 'mid', 'ionia', 'howling_marsh', None,
                  'You are at mid doors, and to your west you\n'
-                 ' see a shadowing place, and to your right is ionia.', None)
+                 ' see a shadowing place, and to your right is ionia.', Enemy3)
 
 current_node = noxus
 directions = ['north', 'south', 'east', 'west']
@@ -216,6 +219,9 @@ short_direction = ['n', 's', 'e', 'w']
 all_commands = ['yes', 'inv']
 
 while True:
+    if current_node == noxus:
+        if Snapper.health < Snapper.max_hp:
+            Snapper.health = Snapper.max_hp
     print(current_node.name)
     print(current_node.description)
     if current_node.items is not None:
@@ -226,15 +232,31 @@ while True:
             print('You took %s.' % current_node.items.name)
             Snapper.inventory.append(current_node.items)
             current_node.items = None
-    else:
-        if command == 'no':
-            print("You did not pick up the item")
-    command = input('>_').lower()
+        else:
+            if command == 'no':
+                print("You did not pick up the item")
     if current_node.enemies is not None:
         print("There is an Enemy here. IT'S THE %s" % current_node.enemies.name)
         print("What do you want to do?")
-        if command == 'attack':
-            print("You attack the %s" % current_node.enemies.name)
+        if command == 'fight':
+            print("You engaged into the %s" % current_node.enemies.name)
+            print("What do you want to do?")
+            print("\n1: Attack\n2: Run")
+            run = 0
+            while Snapper.health > 0 and current_node.enemies.health > 0 and run == 0:
+                command = input(">_")
+                if command == '1':
+                    Snapper.damage -= current_node.enemies.health
+                    Snapper.take_damage(current_node.enemies.damage)
+                    print("YOUR HP: %s" % Snapper.health)
+                if command == '2':
+                    luck = random.randint(1, 1)
+                    if luck == 1:
+                        run += 1
+                        print("You run away.")
+
+
+    command = input('>_').lower()
     if command in short_direction:
         pos = short_direction.index(command)
         command = directions[pos]
