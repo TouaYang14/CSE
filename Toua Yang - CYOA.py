@@ -7,7 +7,7 @@ import random
 # instantiate classes
 # controller
 
-print("__          ________ _      _____ ____  __  __ ______ \n"
+print("__           ________ _      _____ ____  __  __ ______ \n"
 " \ \        / /  ____| |    / ____/ __ \|  \/  |  ____|\n"
 "  \ \  /\  / /| |__  | |   | |   | |  | | \  / | |__   \n"
 "   \ \/  \/ / |  __| | |   | |   | |  | | |\/| |  __|  \n"
@@ -146,11 +146,11 @@ dagger = Dagger(38, 0, 'Dagger', 'A dagger that is fast at attacking, and is sma
 Snapper = Character('Snapper', 320, 0, 50, "Snapper is a turtle , that is seeking to Ionia\n"
                     " so he can deliver a message to the Master", None, 320)
 
-Enemy1 = Character('FireNationTrooper', 200, 0, 50, 'An enemy that wil attack you', None, 200)
+Enemy1 = Character('FireNationTrooper', 200, 0, 50, 'An enemy that will attack you', None, 200)
 
-Enemy2 = Character('FireNationGuard', 500, 0, 103, 'An enemy that wil attack you', None, 500)
+Enemy2 = Character('FireNationGuard', 500, 0, 103, 'An enemy that will attack you', None, 500)
 
-Enemy3 = Character('FireNationCaptain', 500, 40, 70, 'THE CAPTAIN OF THE FIRE NATIONS', None, 500)
+Enemy3 = Character('FireNationCaptain', 700, 40, 150, 'THE CAPTAIN OF THE FIRE NATIONS', None, 700)
 
 
 class Room(object):
@@ -238,6 +238,7 @@ while True:
     if current_node.enemies is not None:
         print("There is an Enemy here. IT'S THE %s" % current_node.enemies.name)
         print("What do you want to do?")
+        command = input('>_').lower()
         if command == 'fight':
             print("You engaged into the %s" % current_node.enemies.name)
             print("What do you want to do?")
@@ -246,15 +247,28 @@ while True:
             while Snapper.health > 0 and current_node.enemies.health > 0 and run == 0:
                 command = input(">_")
                 if command == '1':
-                    Snapper.damage -= current_node.enemies.health
+                    current_node.enemies.take_damage = Snapper.damage
                     Snapper.take_damage(current_node.enemies.damage)
+                   `
+                    print('You attacked the %s' % current_node.enemies.name)
+                    print('It takes %s damage' % Snapper.damage)
+                    print('It has %s health' % current_node.enemies.health)
+                    print("The %s attacked you" % current_node.enemies.name)
+                    print('It does %s damage' % current_node.enemies.damage)
                     print("YOUR HP: %s" % Snapper.health)
+
+                    print()
+                    print("What do you want to do?")
+                    print("\n1: Attack\n2: Run")
                 if command == '2':
                     luck = random.randint(1, 1)
                     if luck == 1:
                         run += 1
                         print("You run away.")
-
+                    if luck != 1:
+                        print("You cannot run away\n"
+                              ""
+                              "the %s is preventing you from running away" % current_node.enemies.name)
 
     command = input('>_').lower()
     if command in short_direction:
