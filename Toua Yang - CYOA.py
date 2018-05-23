@@ -128,6 +128,7 @@ class Character(object):
         if self.health < 0:
             self.health = 0
 
+
 wooden_sword = WoodenSword(102, 0, 'Wooden Sword', 'A wooden sword')
 shield = Shield(0, 41, 'Wooden Shield', 'a wooden shield')
 battle_axe = BattleAxe(76, 0, 'Battle Axe', 'A powerful battle axe that was used in battle.')
@@ -191,7 +192,7 @@ mid = Room('mid', 'mid_doors', 'top_mid', 'staircase', 'lower_tunnels', None, 'Y
 pit = Room('pit', 'long', 'pitdoor', 'longdoors', None, clock, 'The pit.. There is a door to the south', None)
 pitdoor = Room('pitdoor', 'pit', 'noxus', None, None, wings, 'Where the wings lies. You see the wing on the ground\n'
                                                              'and there is a portal to the south', None)
-staircase = Room('staircase', 'shadow_isle', 'top_mid', None, 'mid', None, 'You see a hallway\n'
+staircase = Room('staircase', 'shadow_isle', 'top_mid', None, 'mid', dagger, 'You see a hallway\n'
                  ' turning right, and it is\n'
                  ' leading to a stair case, with dark and misty clouds. As your feet tremble you hear a sound.', None)
 shadow_isle = Room('shadow_isle', None, 'staircase', 'icathia', None, gauntlet, 'You\n'
@@ -229,9 +230,14 @@ while True:
         print(current_node.items.name)
         command = input('>_').lower()
         if command == 'yes':
+            weapon_class = [dagger, wooden_sword, steelsword, battle_axe]
             print('You took %s.' % current_node.items.name)
+            if current_node.items in weapon_class:
+                Snapper.damage += current_node.items.damage
+                print("You damage now is %s" % Snapper.damage)
             Snapper.inventory.append(current_node.items)
             current_node.items = None
+
         else:
             if command == 'no':
                 print("You did not pick up the item")
@@ -247,15 +253,26 @@ while True:
             while Snapper.health > 0 and current_node.enemies.health > 0 and run == 0:
                 command = input(">_")
                 if command == '1':
-                    current_node.enemies.take_damage = Snapper.damage
+                    current_node.enemies.health -= Snapper.damage
                     Snapper.take_damage(current_node.enemies.damage)
-                   `
                     print('You attacked the %s' % current_node.enemies.name)
                     print('It takes %s damage' % Snapper.damage)
-                    print('It has %s health' % current_node.enemies.health)
-                    print("The %s attacked you" % current_node.enemies.name)
-                    print('It does %s damage' % current_node.enemies.damage)
-                    print("YOUR HP: %s" % Snapper.health)
+                    if current_node.enemies.health > 0:
+                        print('It has %s health left' % current_node.enemies.health)
+                    else:
+                        print('It has 0 health left')
+                    if current_node.enemies.health >= 1:
+                        print("The %s attacked you" % current_node.enemies.name)
+                        print('It does %s damage' % current_node.enemies.damage)
+                        print("YOUR HP: %s" % Snapper.health)
+                    if current_node.enemies.health == 0:
+                        # current_node.enemies.health = 0
+                        print("The %s died" % current_node.enemies.name)
+                        current_node.enemies = None
+                    if Snapper.health < 0:
+                        print("You have died")
+                        print("Game Over")
+                        exit(0)
 
                     print()
                     print("What do you want to do?")
