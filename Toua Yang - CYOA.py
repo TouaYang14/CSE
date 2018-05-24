@@ -257,7 +257,7 @@ while True:
                     Snapper.take_damage(current_node.enemies.damage)
                     print('You attacked the %s' % current_node.enemies.name)
                     print('It takes %s damage' % Snapper.damage)
-                    if current_node.enemies.health > 0:
+                    if current_node.enemies.health >= 0:
                         print('It has %s health left' % current_node.enemies.health)
                     else:
                         print('It has 0 health left')
@@ -265,10 +265,9 @@ while True:
                         print("The %s attacked you" % current_node.enemies.name)
                         print('It does %s damage' % current_node.enemies.damage)
                         print("YOUR HP: %s" % Snapper.health)
-                    if current_node.enemies.health == 0:
-                        # current_node.enemies.health = 0
+                    if current_node.enemies.health <= 0:
                         print("The %s died" % current_node.enemies.name)
-                        current_node.enemies = None
+                        current_node.enemies.remove()
                     if Snapper.health < 0:
                         print("You have died")
                         print("Game Over")
@@ -310,3 +309,8 @@ while True:
             quit(0)
 
     print('')
+
+    if current_node == ionia:
+      print("You have finally reached Ionia")
+      print('This is where it ends')
+      exit(0)
